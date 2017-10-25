@@ -7,7 +7,7 @@
 
 ## Introduction
 `AppDelegate` is a traditional example of bad code. Lots of line of code that makes so much different things are put together in methods that are called within the application life cycle. But all of those concerns are over.
-Using `PluggableApplicationDelegate` you decouple AppDelegate from the services that you plug to it. Each `ApplicationService` has its own life cycle that is shared with `AppDelegate`. 
+Using `PluggableApplicationDelegate` you decouple AppDelegate from the services that you plug to it. Each `ApplicationService` has its own life cycle that is shared with `AppDelegate`.
 
 ## At a glance
 Let see some code.
@@ -19,12 +19,12 @@ import PluggableApplicationDelegate
 
 final class LoggerApplicationService: NSObject, ApplicationService {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        
+
         print("It has started!")
-        
+
         return true
     }
-    
+
     func applicationDidEnterBackground(_ application: UIApplication) {
         print("It has entered background")
     }
@@ -41,7 +41,7 @@ import PluggableApplicationDelegate
 
 @UIApplicationMain
 class AppDelegate: PluggableApplicationDelegate {
-    
+
     override var services: [ApplicationService] {
         return [
             LoggerApplicationService()
@@ -64,7 +64,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-PluggableApplicationDelegate requires Swift 3.0 or above.
+PluggableApplicationDelegate requires Swift 4.0 or above.
 
 ## Installation
 
